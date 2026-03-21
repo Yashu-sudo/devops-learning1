@@ -45,3 +45,18 @@
 
 
 # Terraform drift ->  manaual change in cloud resources
+- in plan it will tell to create and in apply it will create 
+
+
+
+# how to import 
+
+import {
+  to = aws_ecs_task_definition.manualimport
+  id = "arn:aws:ecs:ap-south-1:879381241087:task-definition/jan26week5-studentportal:4"
+}
+
+# run command 
+terraform plan -generate-config-out=manualimportedstuff.tf
+
+

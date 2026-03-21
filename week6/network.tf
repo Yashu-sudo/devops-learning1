@@ -43,10 +43,10 @@ resource "aws_subnet" "public2" {
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
 
-    route {
-      cidr_block = "0.0.0.0/0"
-      gateway_id = aws_internet_gateway.gw.id
-    }
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.gw.id
+  }
 
   tags = {
     Name = "public RT"
@@ -91,7 +91,7 @@ resource "aws_nat_gateway" "primary" {
   # on the Internet Gateway for the VPC.
 
   # explicit dependency - > [itema1, itema2, itema3]
-depends_on = [aws_internet_gateway.gw , aws_route_table.public]
+  depends_on = [aws_internet_gateway.gw, aws_route_table.public]
 }
 
 # elastic ip for NAT gateway
@@ -134,10 +134,10 @@ resource "aws_route_table" "private" {
 }
 
 resource "aws_route" "nat" {
-  route_table_id              = aws_route_table.private.id
- 
-  nat_gateway_id = aws_nat_gateway.primary.id
-  destination_cidr_block       = "0.0.0.0/0"
+  route_table_id = aws_route_table.private.id
+
+  nat_gateway_id         = aws_nat_gateway.primary.id
+  destination_cidr_block = "0.0.0.0/0"
 }
 resource "aws_route_table_association" "c" {
 
