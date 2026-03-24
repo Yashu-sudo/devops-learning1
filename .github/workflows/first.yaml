@@ -22,3 +22,16 @@ jobs:
           echo "Hello World"
           echo "Welcome to GitHub Actions"
           echo "This is a multi-line command"
+
+  second_job:
+    runs-on: windows-latest
+    steps:
+      - name: Run Windows command
+        run: echo "Hello from Windows"
+
+      - name: Multiple Windows commands
+        run: |
+          echo "Hello World"
+          echo "Welcome to GitHub Actions on Windows"
+          dir
+          Get-ChildItem
